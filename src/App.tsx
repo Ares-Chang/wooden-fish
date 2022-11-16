@@ -35,7 +35,7 @@ const App: Component = () => {
 
       <footer color='#444'>
         <div font-bold text-sm>
-          <div mb="1.5">
+          <div mb='1.5'>
             按下
             <code class={styles.code}>Space</code>或
             <code class={styles.code}>Click</code>
@@ -49,14 +49,14 @@ const App: Component = () => {
           <a
             href='https://www.github.com/ares-chang/wooden-fish'
             target='_blank'
-            hover:color='#eee'
+            color='hover:#eee'
             flex
             items-center
             gap-1>
             <i i-carbon-logo-github inline-block></i>
             <span>GitHub</span>
           </a>
-          <a href='https://www.github.com/ares-chang' hover:color='#eee'>
+          <a href='https://www.github.com/ares-chang' color='hover:#eee'>
             @AresChang
           </a>
         </div>
