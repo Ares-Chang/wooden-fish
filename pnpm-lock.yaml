@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/carbon': ^1.1.10
+  '@unocss/preset-attributify': ^0.46.5
   '@unocss/reset': ^0.46.5
   solid-js: ^1.5.1
   typescript: ^4.8.2
@@ -14,6 +15,7 @@ dependencies:
 
 devDependencies:
   '@iconify-json/carbon': registry.npmmirror.com/@iconify-json/carbon/1.1.10
+  '@unocss/preset-attributify': registry.npmmirror.com/@unocss/preset-attributify/0.46.5
   '@unocss/reset': registry.npmmirror.com/@unocss/reset/0.46.5
   typescript: 4.8.2
   unocss: registry.npmmirror.com/unocss/0.46.5_vite@3.0.9
