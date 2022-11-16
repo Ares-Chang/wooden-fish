@@ -16,15 +16,23 @@ const App: Component = () => {
       color-white
       flex='~ col'
       justify-between
-      select-none>
+      select-none
+      style={{
+        'font-family': "'Roboto', sans-serif"
+      }}>
       <header>
         <div text-left>
           <AresChang />
         </div>
-        <div text-8xl font-bold>
+        <div
+          text-9xl
+          font-bold
+          style={{
+            'font-family': "'Pacifico', cursive"
+          }}>
           79
         </div>
-        <div color='#444' text-3xl mt-1>
+        <div color='#444' text-3xl mt-2>
           功德
         </div>
       </header>
@@ -45,7 +53,7 @@ const App: Component = () => {
             点击<code class={styles.code}>左上角Logo</code>开启/关闭 沉浸模式
           </div>
         </div>
-        <div flex justify-between text-lg>
+        <div flex justify-between text-lg mt-1>
           <a
             href='https://www.github.com/ares-chang/wooden-fish'
             target='_blank'
