@@ -1,0 +1,3 @@
+.code {
+  @apply color-black bg-#444 text-0.5rem py-0.5 px-1.4 border-rd-1.3 m-2;
+}

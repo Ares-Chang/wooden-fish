@@ -1,5 +1,6 @@
 import type { Component } from 'solid-js'
 
+import styles from './App.module.css'
 import WoodenFish from './WoodenFish.svg'
 import { AresChang } from './components/AresChang'
 
@@ -23,7 +24,7 @@ const App: Component = () => {
         <div text-8xl font-bold>
           79
         </div>
-        <div color='#444' text-xl>
+        <div color='#444' text-3xl mt-1>
           功德
         </div>
       </header>
@@ -33,11 +34,16 @@ const App: Component = () => {
       </main>
 
       <footer color='#444'>
-        <div>
-          按下<code>Space</code>或<code>Click</code>积攒功德
-        </div>
-        <div>
-          点击<code>左上角Logo</code>开启/关闭 沉浸模式
+        <div font-bold text-sm>
+          <div mb="1.5">
+            按下
+            <code class={styles.code}>Space</code>或
+            <code class={styles.code}>Click</code>
+            积攒功德
+          </div>
+          <div>
+            点击<code class={styles.code}>左上角Logo</code>开启/关闭 沉浸模式
+          </div>
         </div>
         <div flex justify-between text-lg>
           <a
