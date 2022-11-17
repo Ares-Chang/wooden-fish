@@ -1,8 +1,20 @@
 import type { Component } from 'solid-js'
+import { createSignal } from 'solid-js'
 
 import styles from './App.module.css'
 import WoodenFish from './WoodenFish.svg'
 import { AresChang } from './components/AresChang'
+
+const [count, setCount] = createSignal(0)
+const [zoom, setZoom] = createSignal(false)
+let timer: number | undefined = undefined
+
+function handle() {
+  setCount(count() + 1)
+  setZoom(true)
+  clearInterval(timer)
+  timer = setTimeout(() => setZoom(false), 200)
+}
 
 const App: Component = () => {
   return (
@@ -27,10 +39,12 @@ const App: Component = () => {
         <div
           text-9xl
           font-bold
+          transition-300
           style={{
-            'font-family': "'Pacifico', cursive"
+            'font-family': "'Pacifico', cursive",
+            transform: `scale(${zoom() ? 1.1 : 1})`
           }}>
-          79
+          {count()}
         </div>
         <div color='#444' text-3xl mt-2>
           功德
@@ -38,7 +52,15 @@ const App: Component = () => {
       </header>
 
       <main flex justify-center>
-        <img src={WoodenFish} alt='WoodenFish' />
+        <img
+          src={WoodenFish}
+          alt='WoodenFish'
+          onClick={handle}
+          transition-300
+          style={{
+            transform: `scale(${zoom() ? 0.99 : 1})`
+          }}
+        />
       </main>
 
       <footer color='#444'>
