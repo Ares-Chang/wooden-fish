@@ -8,12 +8,16 @@ import { AresChang } from './components/AresChang'
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
 let timer: number | undefined = undefined
+let sound: HTMLAudioElement
 
 function handle() {
+  sound.play()
   setCount(count() + 1)
   setZoom(true)
   clearInterval(timer)
-  timer = setTimeout(() => setZoom(false), 200)
+  timer = setTimeout(() => {
+    setZoom(false)
+  }, 200)
 }
 
 const App: Component = () => {
@@ -32,6 +36,7 @@ const App: Component = () => {
       style={{
         'font-family': "'Roboto', sans-serif"
       }}>
+      <audio ref={sound} src='/src/assets/sound.mp3'></audio>
       <header>
         <div text-left>
           <AresChang />
