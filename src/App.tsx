@@ -7,17 +7,19 @@ import { AresChang } from './components/AresChang'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
-let timer: number | undefined = undefined
 let sound: HTMLAudioElement
+const isPC =
+  !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  )
 
 function handle() {
   sound.play()
   setCount(count() + 1)
   setZoom(true)
-  clearInterval(timer)
-  timer = setTimeout(() => {
-    setZoom(false)
-  }, 200)
+}
+function release() {
+  setZoom(false)
 }
 
 const App: Component = () => {
@@ -61,7 +63,10 @@ const App: Component = () => {
         <img
           src={WoodenFish}
           alt='WoodenFish'
-          onClick={handle}
+          onMouseDown={isPC ? handle : () => {}}
+          onMouseUp={isPC ? release : () => {}}
+          onTouchStart={handle}
+          onTouchEnd={release}
           transition-300
           style={{
             transform: `scale(${zoom() ? 0.99 : 1})`
