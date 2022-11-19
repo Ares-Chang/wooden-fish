@@ -14,6 +14,7 @@ const isPC =
   )
 
 function handle() {
+  sound.currentTime = 0 // 设置进度，重新播放
   sound.play()
   setCount(count() + 1)
   setZoom(true)
