@@ -2,6 +2,7 @@ import type { Component } from 'solid-js'
 import { createSignal } from 'solid-js'
 
 import styles from './App.module.css'
+import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './WoodenFish.svg'
 import { AresChang } from './components/AresChang'
 
@@ -40,7 +41,7 @@ const App: Component = () => {
       style={{
         'font-family': "'Roboto', sans-serif"
       }}>
-      <audio ref={sound} src='/src/assets/sound.mp3'></audio>
+      <audio ref={sound} src={SoundUrl}></audio>
       <header>
         <div text-left>
           <AresChang />
