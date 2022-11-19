@@ -33,6 +33,7 @@ const App: Component = () => {
       flex='~ col'
       justify-between
       select-none
+      overflow-hidden
       style={{
         'font-family': "'Roboto', sans-serif"
       }}>
