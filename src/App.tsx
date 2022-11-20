@@ -2,12 +2,14 @@ import type { Component } from 'solid-js'
 import { createSignal } from 'solid-js'
 
 import styles from './App.module.css'
+import BGMUrl from './assets/bgm.mp3'
 import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './WoodenFish.svg'
 import { AresChang } from './components/AresChang'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
+let bgm: HTMLAudioElement
 let sound: HTMLAudioElement
 const isPC =
   !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -22,6 +24,11 @@ function handle() {
 }
 function release() {
   setZoom(false)
+}
+
+function handleBGM() {
+  if (bgm.paused) bgm.play()
+  else bgm.pause()
 }
 
 const App: Component = () => {
@@ -43,10 +50,14 @@ const App: Component = () => {
       style={{
         'font-family': "'Roboto', sans-serif"
       }}>
+      <audio ref={bgm} src={BGMUrl} loop></audio>
       <audio ref={sound} src={SoundUrl}></audio>
       <header>
-        <div text-left>
+        <div flex justify-between items-center>
           <AresChang />
+          <div text-2xl flex items-center>
+            <i i-carbon-music inline-block onClick={handleBGM}></i>
+          </div>
         </div>
         <div
           text-10rem
