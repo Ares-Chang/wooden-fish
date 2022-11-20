@@ -29,8 +29,10 @@ const App: Component = () => {
     <div
       w-100vw
       h-100vh
-      px-14
-      py-6
+      px-6
+      md:px-10
+      py-4
+      md:py-6
       text-center
       bg='#111'
       color-white
@@ -47,16 +49,24 @@ const App: Component = () => {
           <AresChang />
         </div>
         <div
-          text-9xl
+          text-10rem
           font-bold
           transition-300
           style={{
+            'line-height': 1,
             'font-family': "'Pacifico', cursive",
             transform: `scale(${zoom() ? 1.1 : 1})`
           }}>
           {count()}
         </div>
-        <div color='#444' text-3xl mt-2>
+        <div
+          color='#444'
+          text-xl
+          mt-2
+          font-bold
+          style={{
+            'font-family': "'Pacifico', cursive"
+          }}>
           功德
         </div>
       </header>
@@ -88,7 +98,7 @@ const App: Component = () => {
             点击<code class={styles.code}>左上角Logo</code>开启/关闭 沉浸模式
           </div>
         </div>
-        <div flex justify-between text-lg mt-1>
+        <div flex justify-between md:text-lg mt-6 font-bold>
           <a
             href='https://www.github.com/ares-chang/wooden-fish'
             target='_blank'
