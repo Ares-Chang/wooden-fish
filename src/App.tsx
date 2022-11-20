@@ -56,7 +56,7 @@ const App: Component = () => {
         <div flex justify-between items-center>
           <AresChang />
           <div text-2xl flex items-center>
-            <i i-carbon-music inline-block onClick={handleBGM}></i>
+            <i i-carbon-music inline-block cursor-pointer onClick={handleBGM}></i>
           </div>
         </div>
         <div
@@ -91,6 +91,7 @@ const App: Component = () => {
           onTouchStart={handle}
           onTouchEnd={release}
           transition-300
+          cursor-pointer
           style={{
             transform: `scale(${zoom() ? 0.99 : 1})`
           }}
