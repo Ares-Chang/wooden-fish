@@ -56,7 +56,11 @@ const App: Component = () => {
         <div flex justify-between items-center>
           <AresChang />
           <div text-2xl flex items-center>
-            <i i-carbon-music inline-block cursor-pointer onClick={handleBGM}></i>
+            <i
+              i-carbon-music
+              inline-block
+              cursor-pointer
+              onClick={handleBGM}></i>
           </div>
         </div>
         <div
@@ -107,7 +111,17 @@ const App: Component = () => {
             积攒功德
           </div>
           <div>
-            点击<code class={styles.code}>左上角Logo</code>开启/关闭 沉浸模式
+            点击
+            <code class={styles.code}>
+              右上角
+              <i
+                i-carbon-music
+                inline-block
+                text='0.6rem'
+                v-middle
+                ml='0.4'></i>
+            </code>
+            开启/关闭 沉浸模式
           </div>
         </div>
         <div flex justify-between md:text-lg mt-6 font-bold>
