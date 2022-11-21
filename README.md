@@ -1,7 +1,7 @@
 # 🐟WoodenFish
 
 <h3 align='center'>
-<a href="https://wfish.areschang.top/">Start Game</a>
+<a href="https://wfish.areschang.top/" target="_blank">Start Game</a>
 </h3>
 
 [![WoodenFish](./img/Snipaste_2022-11-21_19-44-23.png)](https://wfish.areschang.top/)
