@@ -1,10 +1,10 @@
 # 🐟WoodenFish
 
 <h3 align='center'>
-<a href="https://vitesse-lite.netlify.app/">Start Game</a>
+<a href="https://wfish.areschang.top/">Start Game</a>
 </h3>
 
-![WoodenFish](./img/Snipaste_2022-11-21_19-44-23.png)
+[![WoodenFish](./img/Snipaste_2022-11-21_19-44-23.png)](https://wfish.areschang.top/)
 
 > 佛曰：“110010101110010 101000111111011 100111000000000 100111000000111 100111000001011 101110000110001 101001111101111 100111011100101 101001111101100 101010100100100 111100101011110 1001111110011001 101010011011111 1111110”
 
