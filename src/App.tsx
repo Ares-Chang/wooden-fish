@@ -96,6 +96,7 @@ const App: Component = () => {
           onTouchEnd={release}
           transition-300
           cursor-pointer
+          draggable={false}
           style={{
             transform: `scale(${zoom() ? 0.99 : 1})`
           }}
