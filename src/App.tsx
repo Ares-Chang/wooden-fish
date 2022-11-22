@@ -27,6 +27,7 @@ function release() {
 }
 
 function handleBGM() {
+  bgm.volume = 0.3
   if (bgm.paused) bgm.play()
   else bgm.pause()
 }
