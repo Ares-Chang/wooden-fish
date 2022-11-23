@@ -32,6 +32,14 @@ function handleBGM() {
   else bgm.pause()
 }
 
+// 绑定全局 keyboard 事件
+document.onkeydown = handleKeyBoard
+document.onkeyup = handleKeyBoard
+function handleKeyBoard({ key, code, type }: KeyboardEvent) {
+  if (key !== ' ' || code !== 'Space') return
+  type === 'keydown' ? handle() : release()
+}
+
 const App: Component = () => {
   return (
     <div
