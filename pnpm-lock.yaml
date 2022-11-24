@@ -2,8 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/carbon': ^1.1.10
+  '@types/howler': ^2.2.7
   '@unocss/preset-attributify': ^0.46.5
   '@unocss/reset': ^0.46.5
+  howler: ^2.2.3
   solid-js: ^1.5.1
   typescript: ^4.8.2
   unocss: ^0.46.5
@@ -11,10 +13,12 @@ specifiers:
   vite-plugin-solid: ^2.3.0
 
 dependencies:
+  howler: registry.npmmirror.com/howler/2.2.3
   solid-js: 1.5.1
 
 devDependencies:
   '@iconify-json/carbon': registry.npmmirror.com/@iconify-json/carbon/1.1.10
+  '@types/howler': registry.npmmirror.com/@types/howler/2.2.7
   '@unocss/preset-attributify': registry.npmmirror.com/@unocss/preset-attributify/0.46.5
   '@unocss/reset': registry.npmmirror.com/@unocss/reset/0.46.5
   typescript: 4.8.2
@@ -879,6 +883,12 @@ packages:
     version: 1.0.0
     dev: true
 
+  registry.npmmirror.com/@types/howler/2.2.7:
+    resolution: {integrity: sha512-PEZldwZqJJw1PWRTpupyC7ajVTZA8aHd8nB/Y0n6zRZi5u8ktYDntsHj13ltEiBRqWwF06pASxBEvCTxniG8eA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/howler/-/howler-2.2.7.tgz}
+    name: '@types/howler'
+    version: 2.2.7
+    dev: true
+
   registry.npmmirror.com/@unocss/astro/0.46.5_vite@3.0.9:
     resolution: {integrity: sha512-Ey4ReY0ult1IARdgYsEynwGbfvmwoUBOFKKdQzsm6TQR/HcSGLND4Yzoa0OTotG5gj6h9jCPjypZtw6xCUqyzg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/astro/-/astro-0.46.5.tgz}
     id: registry.npmmirror.com/@unocss/astro/0.46.5
@@ -1521,6 +1531,12 @@ packages:
     dependencies:
       duplexer: registry.npmmirror.com/duplexer/0.1.2
     dev: true
+
+  registry.npmmirror.com/howler/2.2.3:
+    resolution: {integrity: sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/howler/-/howler-2.2.3.tgz}
+    name: howler
+    version: 2.2.3
+    dev: false
 
   registry.npmmirror.com/human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/human-signals/-/human-signals-2.1.0.tgz}
