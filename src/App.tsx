@@ -1,5 +1,6 @@
 import type { Component } from 'solid-js'
 import { createSignal } from 'solid-js'
+import { Howl } from 'howler'
 
 import styles from './App.module.css'
 import BGMUrl from './assets/bgm.mp3'
@@ -9,15 +10,22 @@ import { AresChang } from './components/AresChang'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
-let bgm: HTMLAudioElement
-let sound: HTMLAudioElement
+const bgm = new Howl({
+  src: [BGMUrl],
+  html5: true,
+  loop: true,
+  volume: 0.2
+})
+const sound = new Howl({
+  src: [SoundUrl]
+})
 const isPC =
   !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
   )
 
 function handle() {
-  sound.currentTime = 0 // 设置进度，重新播放
+  // if (sound.playing()) sound.stop() // 添加后连续点击断续感会很强
   sound.play()
   setCount(count() + 1)
   setZoom(true)
@@ -27,8 +35,7 @@ function release() {
 }
 
 function handleBGM() {
-  bgm.volume = 0.3
-  if (bgm.paused) bgm.play()
+  if (!bgm.playing()) bgm.play()
   else bgm.pause()
 }
 
@@ -59,8 +66,6 @@ const App: Component = () => {
       style={{
         'font-family': "'Roboto', sans-serif"
       }}>
-      <audio ref={bgm} src={BGMUrl} loop></audio>
-      <audio ref={sound} src={SoundUrl}></audio>
       <header>
         <div flex justify-between items-center>
           <AresChang />
