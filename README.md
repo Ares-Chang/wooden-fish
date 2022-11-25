@@ -29,6 +29,8 @@
 
 - 😃 [各种图标集为你所用](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
 
+- 🎧[Howler](https://github.com/goldfire/howler.js) - 现代网络音频库
+
 - 🦾 [TypeScript](https://github.com/microsoft/TypeScript), 超强壮
 
 - ☁️ 零配置部署 [Netlify](https://www.netlify.com/)
