@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js'
-import { createSignal } from 'solid-js'
+import { createSignal, Show } from 'solid-js'
 import { Howl } from 'howler'
 
 import styles from './App.module.css'
@@ -7,9 +7,11 @@ import BGMUrl from './assets/bgm.mp3'
 import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './WoodenFish.svg'
 import { AresChang } from './components/AresChang'
+import SwitchingSound from './components/SwitchingSound'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
+const [show, setShow] = createSignal(false) // 设置 setting 显隐
 const bgm = new Howl({
   src: [BGMUrl],
   html5: true,
@@ -69,12 +71,17 @@ const App: Component = () => {
       <header>
         <div flex justify-between items-center>
           <AresChang />
-          <div text-2xl flex items-center>
+          <div text-2xl flex items-center gap-2>
             <i
               i-carbon-music
               inline-block
               cursor-pointer
               onClick={handleBGM}></i>
+            <i
+              i-carbon-settings
+              inline-block
+              cursor-pointer
+              onClick={() => setShow(true)}></i>
           </div>
         </div>
         <div
@@ -155,6 +162,9 @@ const App: Component = () => {
           </a>
         </div>
       </footer>
+      <Show when={show()}>
+        <SwitchingSound />
+      </Show>
     </div>
   )
 }
