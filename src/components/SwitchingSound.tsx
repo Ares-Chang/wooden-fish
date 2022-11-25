@@ -1,4 +1,4 @@
-export default function () {
+export default function SwitchingSound() {
   return (
     <div
       w-100vw
