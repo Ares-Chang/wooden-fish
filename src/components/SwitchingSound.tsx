@@ -1,4 +1,4 @@
-export default function SwitchingSound() {
+export default function SwitchingSound(prop: { close: () => void }) {
   return (
     <div
       w-100vw
@@ -10,7 +10,8 @@ export default function SwitchingSound() {
       bg-black='/50'
       flex
       justify-center
-      items-center>
+      items-center
+      onClick={prop.close}>
       <div flex-1>
         <div text-3xl>背景音量</div>
         <div my-20>

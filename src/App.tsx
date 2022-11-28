@@ -163,7 +163,7 @@ const App: Component = () => {
         </div>
       </footer>
       <Show when={show()}>
-        <SwitchingSound />
+        <SwitchingSound close={() => setShow(false)} />
       </Show>
     </div>
   )
