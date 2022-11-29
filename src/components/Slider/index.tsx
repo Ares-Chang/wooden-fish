@@ -1,17 +1,15 @@
 import { onMount, createSignal } from 'solid-js'
 
 let line: HTMLDivElement
-let point: HTMLDivElement
 
-let downX // 点击时位置
-let [moveX, setMoveX] = createSignal(10)
+let min = 0
+let max = 0
+let [moveX, setMoveX] = createSignal(0)
 /**
  * 鼠标按下事件
  * @param e
  */
 function mouseDown(e: MouseEvent) {
-  downX = e.clientX
-  console.log(e, downX)
   // 绑定鼠标移动及松开事件
   document.addEventListener('mousemove', mouseMove)
   document.addEventListener('mouseup', mouseUp)
@@ -23,12 +21,10 @@ function mouseDown(e: MouseEvent) {
  */
 function mouseMove(e: MouseEvent) {
   let val = e.clientX
-  if (val <= line.offsetLeft) val = line.offsetLeft
-  else if (val >= line.offsetWidth) val = line.offsetWidth
+  if (val <= min) val = min
+  else if (val >= max) val = max
 
   setMoveX(val)
-
-  console.log(moveX())
 }
 
 /**
@@ -43,8 +39,10 @@ function mouseUp(e: MouseEvent) {
 
 export default function Silder() {
   onMount(() => {
-    console.log(line.offsetWidth, point)
-    console.log(moveX())
+    // 获取最大及最小边界范围
+    min = line.offsetLeft
+    max = line.offsetWidth
+    setMoveX(min)
   })
   return (
     <div ref={line} h-10px bg-white='/70'>
@@ -58,7 +56,6 @@ export default function Silder() {
           width: moveX() + 'px'
         }}>
         <div
-          ref={point}
           w-10
           h-10
           bg-white='/80'
