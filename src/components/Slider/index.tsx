@@ -5,13 +5,11 @@ let point: HTMLDivElement
 
 let downX // 点击时位置
 let [moveX, setMoveX] = createSignal(10)
-let [bg, setBg] = createSignal('red')
 /**
  * 鼠标按下事件
  * @param e
  */
 function mouseDown(e: MouseEvent) {
-  setBg('pink')
   downX = e.clientX
   console.log(e, downX)
   // 绑定鼠标移动及松开事件
