@@ -25,7 +25,7 @@ function mouseDown(e: MouseEvent) {
  */
 function mouseMove(e: MouseEvent) {
   let val = e.clientX
-  if (val <= 0) val = 0
+  if (val <= line.offsetLeft) val = line.offsetLeft
   else if (val >= line.offsetWidth) val = line.offsetWidth
 
   setMoveX(val)
