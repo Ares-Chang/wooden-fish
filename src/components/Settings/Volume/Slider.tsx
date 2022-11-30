@@ -47,6 +47,9 @@ export default function Silder(props: {
   onMount(() => {
     // 获取最大及最小边界范围
     min = line.offsetLeft
+    /**
+     * @Todo 拖动范围计算方式错误，待优化
+     */
     max = line.offsetWidth + 40
 
     initValue(props.value, max)
