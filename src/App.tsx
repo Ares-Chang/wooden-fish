@@ -7,16 +7,18 @@ import BGMUrl from './assets/bgm.mp3'
 import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './WoodenFish.svg'
 import { AresChang } from './components/AresChang'
-import SwitchingSound from './components/SwitchingSound'
+import Settings from './components/Settings'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
-const [show, setShow] = createSignal(false) // 设置 setting 显隐
+const [show, setShow] = createSignal(false) // 设置 Settings 显隐
+const [volume, setVolume] = createSignal(30) // 设置背景音量
+
 const bgm = new Howl({
   src: [BGMUrl],
   html5: true,
   loop: true,
-  volume: 0.2
+  volume: volume() / 100
 })
 const sound = new Howl({
   src: [SoundUrl]
@@ -163,7 +165,11 @@ const App: Component = () => {
         </div>
       </footer>
       <Show when={show()}>
-        <SwitchingSound close={() => setShow(false)} />
+        <Settings
+          volume={volume()}
+          onSetVolume={e => setVolume(e)}
+          close={() => setShow(false)}
+        />
       </Show>
     </div>
   )
