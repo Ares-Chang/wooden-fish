@@ -1,5 +1,7 @@
+import { createSignal } from 'solid-js'
 import Silder from './Slider'
 export default function SwitchingSound(prop: { close: () => void }) {
+  const [value, setValue] = createSignal(30)
   return (
     <div
       w-100vw
@@ -16,7 +18,7 @@ export default function SwitchingSound(prop: { close: () => void }) {
       <div flex-1>
         <div text-3xl>背景音量</div>
         <div my-20 onClick={e => e.stopPropagation()}>
-          <Silder />
+          <Silder value={value()} onSetValue={e => setValue(e)} />
         </div>
       </div>
     </div>
