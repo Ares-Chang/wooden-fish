@@ -1,6 +1,7 @@
 import { onMount, createSignal } from 'solid-js'
 
 let line: HTMLDivElement
+let point: HTMLDivElement
 
 export default function Silder(props: {
   value: number
@@ -8,12 +9,14 @@ export default function Silder(props: {
 }) {
   let min = 0
   let max = 0
+  let diff = 0
   let [moveX, setMoveX] = createSignal(0)
   /**
    * 鼠标按下事件
    * @param e
    */
   function mouseDown(e: MouseEvent) {
+    diff = e.clientX - point.offsetLeft // 获取点击位置与 point 位置差值
     // 绑定鼠标移动及松开事件
     document.addEventListener('mousemove', mouseMove)
     document.addEventListener('mouseup', mouseUp)
@@ -25,10 +28,9 @@ export default function Silder(props: {
    */
   function mouseMove(e: MouseEvent) {
     let val = e.clientX
-    if (val <= min) val = min
-    else if (val >= max) val = max
-
-    setValue(val, max)
+    if (val >= max) val = max
+    // val - (diff - 40) 修正点击位置带来的位置跳动
+    setValue(val - (diff - 40), max)
   }
 
   /**
@@ -45,7 +47,7 @@ export default function Silder(props: {
   onMount(() => {
     // 获取最大及最小边界范围
     min = line.offsetLeft
-    max = line.offsetWidth
+    max = line.offsetWidth + 40
 
     initValue(props.value, max)
   })
@@ -68,7 +70,7 @@ export default function Silder(props: {
   function setValue(val: number, max: number) {
     setMoveX(val) // 设置进度
     // 目标值 / 总值  * 100 = 百分比
-    props.onSetValue(Math.trunc((val / max) * 100))
+    props.onSetValue(val >= 0 ? 0 : Math.trunc((val / max) * 100))
   }
 
   return (
@@ -79,15 +81,21 @@ export default function Silder(props: {
         flex
         justify-end
         items-center
+        relative
         style={{
           width: moveX() + 'px'
         }}>
         <div
+          ref={point}
           w-10
           h-10
           bg-white='/80'
           rd-5
+          absolute
           cursor-pointer
+          style={{
+            transform: 'translateX(20px)'
+          }}
           onMouseDown={mouseDown}></div>
       </div>
     </div>
