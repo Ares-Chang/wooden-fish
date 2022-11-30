@@ -1,5 +1,5 @@
+import { createEffect, createSignal, Show } from 'solid-js'
 import type { Component } from 'solid-js'
-import { createSignal, Show } from 'solid-js'
 import { Howl } from 'howler'
 
 import styles from './App.module.css'
@@ -52,6 +52,9 @@ function handleKeyBoard({ key, code, type }: KeyboardEvent) {
 }
 
 const App: Component = () => {
+  // 监听控制声音变化
+  createEffect(() => bgm.volume(volume() / 100))
+
   return (
     <div
       w-100vw
