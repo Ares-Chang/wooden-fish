@@ -1,6 +1,4 @@
-import Silder from './Slider'
-
-export default function Volume(props: {
+export function Volume(props: {
   volume: number
   onUpdateVolume: (val: number) => void
 }) {

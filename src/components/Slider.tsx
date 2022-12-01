@@ -1,9 +1,7 @@
-import { onMount, createSignal } from 'solid-js'
-
 let line: HTMLDivElement
 let point: HTMLDivElement
 
-export default function Silder(props: {
+export function Silder(props: {
   value: number
   onSetValue: (val: number) => void
 }) {

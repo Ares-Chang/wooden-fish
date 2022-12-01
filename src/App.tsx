@@ -1,4 +1,3 @@
-import { createEffect, createSignal, Show } from 'solid-js'
 import type { Component } from 'solid-js'
 import { Howl } from 'howler'
 
@@ -6,8 +5,6 @@ import styles from './App.module.css'
 import BGMUrl from './assets/bgm.mp3'
 import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './WoodenFish.svg'
-import { AresChang } from './components/AresChang'
-import Settings from './components/Settings'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)

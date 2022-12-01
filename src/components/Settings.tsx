@@ -1,7 +1,4 @@
-import { splitProps } from 'solid-js'
-import Volume from './Volume'
-
-export default function Setting(props: {
+export function Settings(props: {
   volume: number
   onUpdateVolume: (val: number) => void
   onClose: () => void
