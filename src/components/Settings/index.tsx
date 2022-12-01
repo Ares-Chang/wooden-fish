@@ -3,10 +3,10 @@ import Volume from './Volume'
 
 export default function Setting(props: {
   volume: number
-  onSetVolume: (val: number) => void
-  close: () => void
+  onUpdateVolume: (val: number) => void
+  onClose: () => void
 }) {
-  const [local, others] = splitProps(props, ['close'])
+  const [local, others] = splitProps(props, ['onClose'])
   return (
     <div
       w-100vw
@@ -19,7 +19,7 @@ export default function Setting(props: {
       flex
       justify-center
       items-center
-      onClick={local.close}>
+      onClick={local.onClose}>
       <Volume {...others} />
     </div>
   )

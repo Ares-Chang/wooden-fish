@@ -170,8 +170,8 @@ const App: Component = () => {
       <Show when={show()}>
         <Settings
           volume={volume()}
-          onSetVolume={e => setVolume(e)}
-          close={() => setShow(false)}
+          onUpdateVolume={e => setVolume(e)}
+          onClose={() => setShow(false)}
         />
       </Show>
     </div>
