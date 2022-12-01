@@ -27,6 +27,8 @@
 
 - 🎨[UnoCSS](https://github.com/unocss/unocss) - 高性能且极具灵活性的即时原子化 CSS 引擎
 
+- 📦[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) - 直接使用 Composition API 等，无需导入
+
 - 😃 [各种图标集为你所用](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
 
 - 🎧[Howler](https://github.com/goldfire/howler.js) - 现代网络音频库
