@@ -73,7 +73,7 @@ export default function Silder(props: {
   function setValue(val: number, max: number) {
     setMoveX(val) // 设置进度
     // 目标值 / 总值  * 100 = 百分比
-    props.onSetValue(val >= 0 ? 0 : Math.trunc((val / max) * 100))
+    props.onSetValue(val <= 0 ? 0 : Math.trunc((val / max) * 100))
   }
 
   return (
