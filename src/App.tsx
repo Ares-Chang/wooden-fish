@@ -6,10 +6,29 @@ import BGMUrl from './assets/bgm.mp3'
 import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './assets/WoodenFish.svg'
 
+const config = JSON.parse(localStorage.getItem('config') || '{}') // 读取配置
+if (JSON.stringify(config) === '{}')
+  localStorage.setItem('config', JSON.stringify({ volume: 30 })) // 初始化配置
+
+/**
+ * 设置本地存储
+ * @param key 属性名
+ * @param val 属性值
+ */
+function updateConfig(key: string, val: any) {
+  localStorage.setItem(
+    'config',
+    JSON.stringify({
+      ...config,
+      [key]: val
+    })
+  )
+}
+
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
 const [show, setShow] = createSignal(false) // 设置 Settings 显隐
-const [volume, setVolume] = createSignal(30) // 设置背景音量
+const [volume, setVolume] = createSignal(config?.volume || 30) // 设置背景音量
 
 const bgm = new Howl({
   src: [BGMUrl],
@@ -167,7 +186,10 @@ const App: Component = () => {
       <Show when={show()}>
         <Settings
           volume={volume()}
-          onUpdateVolume={e => setVolume(e)}
+          onUpdateVolume={e => {
+            setVolume(e)
+            updateConfig('volume', e)
+          }}
           onClose={() => setShow(false)}
         />
       </Show>
