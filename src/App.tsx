@@ -5,25 +5,9 @@ import styles from './App.module.css'
 import BGMUrl from './assets/bgm.mp3'
 import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './assets/WoodenFish.svg'
+import { useGetConfig, useSetConfig } from './composables/useConfig'
 
-const config = JSON.parse(localStorage.getItem('config') || '{}') // 读取配置
-if (JSON.stringify(config) === '{}')
-  localStorage.setItem('config', JSON.stringify({ volume: 30 })) // 初始化配置
-
-/**
- * 设置本地存储
- * @param key 属性名
- * @param val 属性值
- */
-function updateConfig(key: string, val: any) {
-  localStorage.setItem(
-    'config',
-    JSON.stringify({
-      ...config,
-      [key]: val
-    })
-  )
-}
+const config = useGetConfig() // 读取配置
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
@@ -188,7 +172,7 @@ const App: Component = () => {
           volume={volume()}
           onUpdateVolume={e => {
             setVolume(e)
-            updateConfig('volume', e)
+            useSetConfig('volume', e)
           }}
           onClose={() => setShow(false)}
         />
