@@ -3,12 +3,18 @@ interface UseConfigOptions {
 }
 
 /**
+ * 初始化 config
+ */
+function initConfig() {
+  localStorage.setItem('config', JSON.stringify({ volume: 30 })) // 初始化配置
+}
+
+/**
  * 获取配置 config，如初次使用将初始化配置
  * @returns 配置项
  */
 export function useGetConfig(): UseConfigOptions {
-  if (!localStorage.getItem('config'))
-    localStorage.setItem('config', JSON.stringify({ volume: 30 })) // 初始化配置
+  if (!localStorage.getItem('config')) initConfig()
   return JSON.parse(localStorage.getItem('config') || '{}')
 }
 
