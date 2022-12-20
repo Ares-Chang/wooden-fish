@@ -27,8 +27,7 @@ export function Silder(props: {
   function mouseMove(e: MouseEvent) {
     let val = e.clientX
     if (val >= max) val = max
-    // val - (diff - 40) 修正点击位置带来的位置跳动
-    setValue(val - (diff - 40), max)
+    setValue(val)
   }
 
   /**
@@ -45,33 +44,20 @@ export function Silder(props: {
   onMount(() => {
     // 获取最大及最小边界范围
     min = line.offsetLeft
-    /**
-     * @Todo 拖动范围计算方式错误，待优化
-     */
-    max = line.offsetWidth + 40
-
-    initValue(props.value, max)
+    max = line.offsetWidth + min
+    setMoveX(props.value)
   })
 
   /**
-   * 初始化音量条位置
-   * @param val 目标值
-   * @param max 总值
-   */
-  function initValue(val: number, max: number) {
-    // 百分比 / 100 * 总值 = 目标值
-    setMoveX((val / 100) * max)
-  }
-
-  /**
    * 设置音箱位置及百分比值
-   * @param val 目标值
-   * @param max 总值
+   * @param num 当前位置数值
    */
-  function setValue(val: number, max: number) {
-    setMoveX(val) // 设置进度
+  function setValue(num: number) {
     // 目标值 / 总值  * 100 = 百分比
-    props.onSetValue(val <= 0 ? 0 : Math.trunc((val / max) * 100))
+    const val = Math.trunc((num / max) * 100)
+
+    setMoveX(val) // 设置进度
+    props.onSetValue(val)
   }
 
   return (
@@ -84,7 +70,7 @@ export function Silder(props: {
         items-center
         relative
         style={{
-          width: moveX() + 'px'
+          width: moveX() + '%'
         }}>
         <div
           ref={point}
