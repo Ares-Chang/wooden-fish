@@ -7,16 +7,16 @@ export function Silder(props: {
 }) {
   let min = 0
   let max = 0
-  let diff = 0
   let [moveX, setMoveX] = createSignal(0)
   /**
    * 鼠标按下事件
    * @param e
    */
-  function mouseDown(e: MouseEvent) {
-    diff = e.clientX - point.offsetLeft // 获取点击位置与 point 位置差值
+  function mouseDown(e: MouseEvent | TouchEvent) {
     // 绑定鼠标移动及松开事件
+    document.addEventListener('touchmove', mouseMove)
     document.addEventListener('mousemove', mouseMove)
+    document.addEventListener('touchend', mouseUp)
     document.addEventListener('mouseup', mouseUp)
   }
 
@@ -24,8 +24,9 @@ export function Silder(props: {
    * 鼠标移动事件
    * @param e
    */
-  function mouseMove(e: MouseEvent) {
-    let val = e.clientX
+  function mouseMove(e: MouseEvent | TouchEvent) {
+    let val =
+      (e as MouseEvent)?.clientX || (e as TouchEvent).targetTouches[0].clientX
     if (val >= max) val = max
     setValue(val)
   }
@@ -34,7 +35,7 @@ export function Silder(props: {
    * 鼠标松开事件
    * @param e
    */
-  function mouseUp(e: MouseEvent) {
+  function mouseUp(e: MouseEvent | TouchEvent) {
     // 解除鼠标移动及松开事件绑定
     document.removeEventListener('mousemove', mouseMove)
     document.removeEventListener('mouseup', mouseUp)
@@ -83,7 +84,8 @@ export function Silder(props: {
           style={{
             transform: 'translateX(20px)'
           }}
-          onMouseDown={mouseDown}></div>
+          onMouseDown={mouseDown}
+          onTouchStart={mouseDown}></div>
       </div>
     </div>
   )
