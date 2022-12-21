@@ -12,7 +12,7 @@ const config = useGetConfig() // 读取配置
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
 const [show, setShow] = createSignal(false) // 设置 Settings 显隐
-const [volume, setVolume] = createSignal(config.volume || 30) // 设置背景音量
+const [volume, setVolume] = createSignal(config.volume) // 设置背景音量
 
 const bgm = new Howl({
   src: [BGMUrl],
