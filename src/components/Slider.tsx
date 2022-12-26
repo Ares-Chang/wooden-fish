@@ -38,7 +38,9 @@ export function Silder(props: {
    */
   function mouseUp(e: MouseEvent | TouchEvent) {
     // 解除鼠标移动及松开事件绑定
+    document.removeEventListener('touchmove', mouseMove)
     document.removeEventListener('mousemove', mouseMove)
+    document.removeEventListener('touchend', mouseUp)
     document.removeEventListener('mouseup', mouseUp)
   }
 
