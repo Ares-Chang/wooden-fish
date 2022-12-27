@@ -13,10 +13,11 @@ export function Settings(props: {
       top-0
       left-0
       bg-black='/50'
-      flex
+      flex='~ wrap'
       justify-center
       items-center
       onClick={local.onClose}>
+      <SoundEffect />
       <Volume {...others} />
     </div>
   )

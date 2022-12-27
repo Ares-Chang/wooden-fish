@@ -11,6 +11,7 @@ declare global {
   const Settings: typeof import('./src/components/Settings')['Settings']
   const Show: typeof import('solid-js')['Show']
   const Silder: typeof import('./src/components/Slider')['Silder']
+  const SoundEffect: typeof import('./src/components/SoundEffect')['SoundEffect']
   const Suspense: typeof import('solid-js')['Suspense']
   const SuspenseList: typeof import('solid-js')['SuspenseList']
   const Switch: typeof import('solid-js')['Switch']
