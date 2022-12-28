@@ -5,20 +5,18 @@ import styles from './App.module.css'
 import BGMUrl from './assets/bgm.mp3'
 import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './assets/WoodenFish.svg'
-import { useGetConfig, useSetConfig } from './composables/useConfig'
 
-const config = useGetConfig() // 读取配置
+import { store } from './store'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
 const [show, setShow] = createSignal(false) // 设置 Settings 显隐
-const [volume, setVolume] = createSignal(config.volume) // 设置背景音量
 
 const bgm = new Howl({
   src: [BGMUrl],
   html5: true,
   loop: true,
-  volume: volume() / 100
+  volume: store.volume / 100
 })
 const sound = new Howl({
   src: [SoundUrl]
@@ -29,7 +27,6 @@ const isPC =
   )
 
 function handle() {
-  // if (sound.playing()) sound.stop() // 添加后连续点击断续感会很强
   sound.play()
   setCount(count() + 1)
   setZoom(true)
@@ -53,7 +50,7 @@ function handleKeyBoard({ key, code, type }: KeyboardEvent) {
 
 const App: Component = () => {
   // 监听控制声音变化
-  createEffect(() => bgm.volume(volume() / 100))
+  createEffect(() => bgm.volume(store.volume / 100))
 
   return (
     <div
@@ -168,14 +165,7 @@ const App: Component = () => {
         </div>
       </footer>
       <Show when={show()}>
-        <Settings
-          volume={volume()}
-          onUpdateVolume={e => {
-            setVolume(e)
-            useSetConfig('volume', e)
-          }}
-          onClose={() => setShow(false)}
-        />
+        <Settings onClose={() => setShow(false)} />
       </Show>
     </div>
   )

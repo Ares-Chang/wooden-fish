@@ -1,10 +1,9 @@
+import { store, setStore } from '../store'
+
 let line: HTMLDivElement
 let point: HTMLDivElement
 
-export function Silder(props: {
-  value: number
-  onSetValue: (val: number) => void
-}) {
+export function Silder() {
   let min = 0
   let max = 0
   let [moveX, setMoveX] = createSignal(0)
@@ -49,7 +48,7 @@ export function Silder(props: {
     // 获取最大及最小边界范围
     min = line.offsetLeft
     max = line.offsetWidth + min
-    setMoveX(props.value)
+    setMoveX(store.volume)
   })
 
   /**
@@ -61,7 +60,7 @@ export function Silder(props: {
     const val = Math.trunc((num / max) * 100)
 
     setMoveX(val) // 设置进度
-    props.onSetValue(val)
+    setStore('volume', val)
   }
 
   return (

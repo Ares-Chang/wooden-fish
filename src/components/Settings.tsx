@@ -1,9 +1,4 @@
-export function Settings(props: {
-  volume: number
-  onUpdateVolume: (val: number) => void
-  onClose: () => void
-}) {
-  const [local, others] = splitProps(props, ['onClose'])
+export function Settings(props: { onClose: () => void }) {
   return (
     <div
       w-100vw
@@ -16,9 +11,9 @@ export function Settings(props: {
       flex='~ wrap'
       justify-center
       items-center
-      onClick={local.onClose}>
+      onClick={props.onClose}>
       <SoundEffect />
-      <Volume {...others} />
+      <Volume />
     </div>
   )
 }
