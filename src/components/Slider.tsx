@@ -24,8 +24,11 @@ export function Silder() {
    * @param e
    */
   function mouseMove(e: MouseEvent | TouchEvent) {
-    let val =
-      (e as MouseEvent)?.clientX || (e as TouchEvent).targetTouches[0].clientX
+    let val = 0
+    if (e.type === 'mousemove') val = (e as MouseEvent)?.clientX
+    else if (e.type === 'mousemove')
+      val = (e as TouchEvent)?.targetTouches[0]?.clientX
+
     if (val <= 0) val = 0
     else if (val >= max) val = max
     setValue(val)
