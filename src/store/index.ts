@@ -4,8 +4,12 @@ import {
   UseConfigOptions
 } from '../composables/useConfig'
 
-// 本地缓存字段名称
-const localList = ['volume']
+const configData = useGetConfig() // 本地缓存数据
+const localList = Object.keys(configData) // 本地缓存字段名称
+
+/**
+ * 不需要缓存的字段类型
+ */
 interface StoreProps {
   [key: string]: any
 }
@@ -14,7 +18,7 @@ interface StoreProps {
  * 获取缓存并初始化 store 存储
  */
 export const [store, setStore] = createStore<UseConfigOptions & StoreProps>({
-  ...useGetConfig()
+  ...configData
 })
 
 /**
