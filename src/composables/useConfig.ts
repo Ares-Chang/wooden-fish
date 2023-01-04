@@ -1,4 +1,4 @@
-interface UseConfigOptions {
+export interface UseConfigOptions {
   volume: number
 }
 
