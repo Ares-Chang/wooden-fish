@@ -1,6 +1,6 @@
 import { Howl } from 'howler'
 import BGMUrl from '../assets/bgm.mp3'
-import SoundUrl from '../assets/sound.mp3'
+import SoundUrl_1 from '../assets/sound_1.mp3'
 
 /**
  * 创建背景音乐
@@ -22,6 +22,6 @@ export function useCreateBGM(volume: number) {
  */
 export function useCreateSound() {
   return new Howl({
-    src: [SoundUrl]
+    src: [SoundUrl_1]
   })
 }
