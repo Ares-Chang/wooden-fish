@@ -1,12 +1,17 @@
 export interface UseConfigOptions {
   volume: number
+  sound: number
 }
+/**
+ * 初始化配置
+ */
+const initConfigOptions: UseConfigOptions = { volume: 30, sound: 1 }
 
 /**
  * 初始化 config
  */
 function initConfig() {
-  localStorage.setItem('config', JSON.stringify({ volume: 30 })) // 初始化配置
+  localStorage.setItem('config', JSON.stringify(initConfigOptions))
 }
 
 /**
@@ -15,7 +20,10 @@ function initConfig() {
  */
 export function useGetConfig(): UseConfigOptions {
   if (!localStorage.getItem('config')) initConfig()
-  return JSON.parse(localStorage.getItem('config') || '{}')
+  return {
+    ...initConfigOptions, // 防止添加字段后无法适配问题
+    ...JSON.parse(localStorage.getItem('config') || '{}')
+  }
 }
 
 /**
