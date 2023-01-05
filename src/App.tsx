@@ -19,7 +19,7 @@ const isPC =
   )
 
 function handle() {
-  sound.howl.play()
+  sound.play()
   setCount(count() + 1)
   setZoom(true)
 }

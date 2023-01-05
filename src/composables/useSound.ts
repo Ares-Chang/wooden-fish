@@ -34,4 +34,9 @@ export class useSound {
       src: [useSound.HowlList[index]]
     })
   }
+
+  play() {
+    if (!this.howl) return
+    this.howl.play()
+  }
 }
