@@ -1,6 +1,7 @@
 import { Howl } from 'howler'
 import BGMUrl from '../assets/bgm.mp3'
 import SoundUrl_1 from '../assets/sound_1.mp3'
+import SoundUrl_2 from '../assets/sound_2.mp3'
 
 /**
  * 创建背景音乐
@@ -17,11 +18,20 @@ export function useCreateBGM(volume: number) {
 }
 
 /**
- * 创建点击音效
- * @returns Howl Object
+ * 点击音效 Class
  */
-export function useCreateSound() {
-  return new Howl({
-    src: [SoundUrl_1]
-  })
+export class useSound {
+  static HowlList = [SoundUrl_1, SoundUrl_2]
+  howl: Howl
+  constructor(index: number) {
+    this.howl = new Howl({
+      src: [useSound.HowlList[index]]
+    })
+  }
+
+  changeHowl(index: number) {
+    this.howl = new Howl({
+      src: [useSound.HowlList[index]]
+    })
+  }
 }

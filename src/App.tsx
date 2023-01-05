@@ -4,14 +4,14 @@ import styles from './App.module.css'
 import WoodenFish from './assets/WoodenFish.svg'
 
 import { store } from './store'
-import { useCreateBGM, useCreateSound } from './composables/useSound'
+import { useCreateBGM, useSound } from './composables/useSound'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
 const [show, setShow] = createSignal(false) // 设置 Settings 显隐
 
 const bgm = useCreateBGM(store.volume / 100)
-const sound = useCreateSound()
+const sound = new useSound(store.sound)
 
 const isPC =
   !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -19,7 +19,7 @@ const isPC =
   )
 
 function handle() {
-  sound.play()
+  sound.howl.play()
   setCount(count() + 1)
   setZoom(true)
 }
@@ -43,6 +43,8 @@ function handleKeyBoard({ key, code, type }: KeyboardEvent) {
 const App: Component = () => {
   // 监听控制声音变化
   createEffect(() => bgm.volume(store.volume / 100))
+  // 监听点击音效切换
+  createEffect(() => sound.changeHowl(store.sound))
 
   return (
     <div

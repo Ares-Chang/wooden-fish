@@ -1,3 +1,6 @@
+import { useSound } from '../composables/useSound'
+import { setStore } from '../store'
+
 export function SoundEffect() {
   return (
     <div w-full>
@@ -5,9 +8,9 @@ export function SoundEffect() {
         音效选择
       </div>
       <div flex='~ wrap' justify-center gap-6>
-        {new Array(10).fill(null).map((_, index) => {
+        {useSound.HowlList.map((_, index) => {
           return (
-            <div border p-10 rd-2>
+            <div border p-10 rd-2 onClick={() => setStore('sound', index)}>
               音效{index + 1}
             </div>
           )
