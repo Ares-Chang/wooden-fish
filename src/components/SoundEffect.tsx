@@ -1,5 +1,5 @@
 import { useSound } from '../composables/useSound'
-import { setStore } from '../store'
+import { store, setStore } from '../store'
 
 export function SoundEffect() {
   return (
@@ -10,7 +10,12 @@ export function SoundEffect() {
       <div flex='~ wrap' justify-center gap-6>
         {useSound.HowlList.map((_, index) => {
           return (
-            <div border p-10 rd-2 onClick={() => setStore('sound', index)}>
+            <div
+              border
+              p-10
+              rd-2
+              class={store.sound === index ? 'bg-white color-black' : ''}
+              onClick={() => setStore('sound', index)}>
               音效{index + 1}
             </div>
           )
