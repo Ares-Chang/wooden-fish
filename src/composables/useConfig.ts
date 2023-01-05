@@ -5,7 +5,7 @@ export interface UseConfigOptions {
 /**
  * 初始化配置
  */
-const initConfigOptions: UseConfigOptions = { volume: 30, sound: 1 }
+const initConfigOptions: UseConfigOptions = { volume: 30, sound: 0 }
 
 /**
  * 初始化 config
