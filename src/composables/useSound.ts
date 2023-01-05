@@ -18,23 +18,38 @@ export function useCreateBGM(volume: number) {
 }
 
 /**
- * 点击音效 Class
+ * 注册点击音效
  */
 export class useSound {
+  /**
+   * 音效列表
+   */
   static HowlList = [SoundUrl_1, SoundUrl_2]
+
+  /**
+   * Howl 音效对象
+   */
   howl: Howl
+
   constructor(index: number) {
     this.howl = new Howl({
       src: [useSound.HowlList[index]]
     })
   }
 
+  /**
+   * 更改点击音效
+   * @param index 音效下标
+   */
   changeHowl(index: number) {
     this.howl = new Howl({
       src: [useSound.HowlList[index]]
     })
   }
 
+  /**
+   * howl 播放映射方法
+   */
   play() {
     if (!this.howl) return
     this.howl.play()
