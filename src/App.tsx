@@ -1,26 +1,18 @@
 import type { Component } from 'solid-js'
-import { Howl } from 'howler'
 
 import styles from './App.module.css'
-import BGMUrl from './assets/bgm.mp3'
-import SoundUrl from './assets/sound.mp3'
 import WoodenFish from './assets/WoodenFish.svg'
 
 import { store } from './store'
+import { useCreateBGM, useCreateSound } from './composables/useSound'
 
 const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
 const [show, setShow] = createSignal(false) // 设置 Settings 显隐
 
-const bgm = new Howl({
-  src: [BGMUrl],
-  html5: true,
-  loop: true,
-  volume: store.volume / 100
-})
-const sound = new Howl({
-  src: [SoundUrl]
-})
+const bgm = useCreateBGM(store.volume / 100)
+const sound = useCreateSound()
+
 const isPC =
   !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
