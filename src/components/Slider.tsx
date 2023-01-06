@@ -26,7 +26,7 @@ export function Silder() {
   function mouseMove(e: MouseEvent | TouchEvent) {
     let val = 0
     if (e.type === 'mousemove') val = (e as MouseEvent)?.clientX
-    else if (e.type === 'mousemove')
+    else if (e.type === 'touchmove')
       val = (e as TouchEvent)?.targetTouches[0]?.clientX
 
     if (val <= 0) val = 0
