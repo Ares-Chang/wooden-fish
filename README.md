@@ -53,7 +53,7 @@ $ npm run dev
 **强推一个小工具 [ni](https://github.com/antfu/ni) ，用上之后爱不释手。**
 
 ```shell
-$ git clone git@github.com:liuxiyuan-2022/EWoodenFish.git
+$ git clone git@github.com:Ares-Chang/wooden-fish.git
 $ cd wooden-fish
 $ ni
 $ nr dev
