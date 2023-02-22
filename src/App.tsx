@@ -3,10 +3,9 @@ import type { Component } from 'solid-js'
 import styles from './App.module.css'
 import WoodenFish from './assets/WoodenFish.svg'
 
-import { store } from './store'
+import { store, setStore } from './store'
 import { useCreateBGM, useSound } from './composables/useSound'
 
-const [count, setCount] = createSignal(0)
 const [zoom, setZoom] = createSignal(false)
 const [show, setShow] = createSignal(false) // 设置 Settings 显隐
 
@@ -20,7 +19,7 @@ const isPC =
 
 function handle() {
   sound.play()
-  setCount(count() + 1)
+  setStore('count', store.count + 1)
   setZoom(true)
 }
 function release() {
@@ -89,7 +88,7 @@ const App: Component = () => {
             'font-family': "'Pacifico', cursive",
             transform: `scale(${zoom() ? 1.1 : 1})`
           }}>
-          {count()}
+          {store.count}
         </div>
         <div
           color='#444'

@@ -1,11 +1,12 @@
 export interface UseConfigOptions {
   volume: number
   sound: number
+  count: number
 }
 /**
  * 初始化配置
  */
-const initConfigOptions: UseConfigOptions = { volume: 30, sound: 0 }
+const initConfigOptions: UseConfigOptions = { volume: 30, sound: 0, count: 0 }
 
 /**
  * 初始化 config
