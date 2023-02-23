@@ -9,11 +9,13 @@ export function Settings(props: { onClose: () => void }) {
       left-0
       bg-black='/50'
       flex='~ wrap'
+      gap-6
       justify-center
       items-center
       onClick={props.onClose}>
       <SoundEffect />
       <Volume />
+      <OtherOptions />
     </div>
   )
 }

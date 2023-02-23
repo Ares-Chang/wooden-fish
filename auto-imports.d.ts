@@ -7,6 +7,7 @@ declare global {
   const For: typeof import('solid-js')['For']
   const Index: typeof import('solid-js')['Index']
   const Match: typeof import('solid-js')['Match']
+  const OtherOptions: typeof import('./src/components/OtherOptions')['OtherOptions']
   const Portal: typeof import('solid-js/web')['Portal']
   const Settings: typeof import('./src/components/Settings')['Settings']
   const Show: typeof import('solid-js')['Show']
