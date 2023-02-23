@@ -3,7 +3,7 @@ import { setStore } from '../store'
 export function OtherOptions() {
   function clearCache() {
     setStore('count', 0)
-    alert('清除成功！')
+    alert('叮 ~ 功德已清空！')
   }
 
   return (
