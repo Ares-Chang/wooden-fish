@@ -5,7 +5,22 @@ import {
 } from '../composables/useConfig'
 
 const configData = useGetConfig() // 本地缓存数据
-const localList = Object.keys(configData) // 本地缓存字段名称
+const cacheList = getCacheList(configData)
+
+/**
+ * 获取需要缓存的字段名称
+ * @param configData 缓存配置项
+ * @returns 需要缓存的字段名称
+ */
+function getCacheList(configData: UseConfigOptions & StoreProps) {
+  const keyList = Object.keys(configData)
+  const judgeList = keyList.filter(item => item.includes('is')) // 获取所有包含 isXxx 字段
+  const noCacheList = judgeList
+    .filter(item => !configData[item])
+    .map(item => item.substring(2).replace(/^\S/, s => s.toLowerCase())) // 本地不缓存
+
+  return keyList.filter(item => !noCacheList.includes(item))
+}
 
 /**
  * 不需要缓存的字段类型
@@ -25,5 +40,5 @@ export const [store, setStore] = createStore<UseConfigOptions & StoreProps>({
  * 数据修改后，同步至 localStorage
  */
 createEffect(() => {
-  localList.forEach(key => useSetConfig(key, store[key]))
+  cacheList.forEach(key => useSetConfig(key, store[key]))
 })
