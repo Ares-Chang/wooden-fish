@@ -4,7 +4,14 @@ import {
   UseConfigOptions
 } from '../composables/useConfig'
 
-let configData: UseConfigOptions & StoreProps = useGetConfig() // 本地缓存数据
+/**
+ * 不需要缓存的字段类型
+ */
+interface StoreProps extends UseConfigOptions {
+  [key: string]: any
+}
+
+let configData: StoreProps = useGetConfig() // 本地缓存数据
 const [cacheList, setCacheList] = createSignal(getCacheList(configData))
 
 /**
@@ -12,7 +19,7 @@ const [cacheList, setCacheList] = createSignal(getCacheList(configData))
  * @param configData 缓存配置项
  * @returns 需要缓存的字段名称
  */
-function getCacheList(configData: UseConfigOptions & StoreProps) {
+function getCacheList(configData: StoreProps) {
   const keyList = Object.keys(configData)
   const judgeList = keyList.filter(item => item.includes('is')) // 获取所有包含 isXxx 字段
   const noCacheList = judgeList
@@ -23,16 +30,9 @@ function getCacheList(configData: UseConfigOptions & StoreProps) {
 }
 
 /**
- * 不需要缓存的字段类型
- */
-interface StoreProps {
-  [key: string]: any
-}
-
-/**
  * 获取缓存并初始化 store 存储
  */
-export const [store, setStore] = createStore<UseConfigOptions & StoreProps>({
+export const [store, setStore] = createStore({
   ...configData
 })
 
