@@ -42,6 +42,7 @@ export const [store, setStore] = createStore<UseConfigOptions & StoreProps>({
 createEffect(() => {
   cacheList().forEach(key => {
     useSetConfig(key, store[key])
+    // 判断是否缓存属性产生改变，如果改变，触发 cacheList 重新获取
     if (key.includes('is') && store[key] !== configData[key]) {
       configData = useGetConfig()
       setCacheList(getCacheList(configData))
