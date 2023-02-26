@@ -11,8 +11,8 @@ interface StoreProps extends UseConfigOptions {
   [key: string]: any
 }
 
-let configData: StoreProps = useGetConfig() // 本地缓存数据
-const [cacheList, setCacheList] = createSignal(getCacheList(configData))
+const [configData, setConfigData] = createSignal<StoreProps>(useGetConfig()) // 本地缓存数据
+const [cacheList, setCacheList] = createSignal(getCacheList(configData()))
 
 /**
  * 获取需要缓存的字段名称
@@ -33,7 +33,7 @@ function getCacheList(configData: StoreProps) {
  * 获取缓存并初始化 store 存储
  */
 export const [store, setStore] = createStore({
-  ...configData
+  ...configData()
 })
 
 /**
@@ -43,9 +43,9 @@ createEffect(() => {
   cacheList().forEach(key => {
     useSetConfig(key, store[key])
     // 判断是否缓存属性产生改变，如果改变，触发 cacheList 重新获取
-    if (key.includes('is') && store[key] !== configData[key]) {
-      configData = useGetConfig()
-      setCacheList(getCacheList(configData))
+    if (key.includes('is') && store[key] !== configData()[key]) {
+      setConfigData(useGetConfig())
+      setCacheList(getCacheList(configData()))
     }
   })
 })
