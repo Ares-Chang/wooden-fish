@@ -21,8 +21,11 @@ export function OtherOptions() {
       </div>
       <div>
         <div mb-2>
-          缓存:{' '}
-          <span onClick={setCacheSetting}>
+          缓存:
+          <span
+            pl-2
+            class={store.isCount ? 'color-green' : 'color-red'}
+            onClick={setCacheSetting}>
             {tips()}
           </span>
         </div>
