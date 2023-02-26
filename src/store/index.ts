@@ -4,8 +4,8 @@ import {
   UseConfigOptions
 } from '../composables/useConfig'
 
-const configData = useGetConfig() // 本地缓存数据
-const cacheList = getCacheList(configData)
+let configData: UseConfigOptions & StoreProps = useGetConfig() // 本地缓存数据
+const [cacheList, setCacheList] = createSignal(getCacheList(configData))
 
 /**
  * 获取需要缓存的字段名称
@@ -40,5 +40,11 @@ export const [store, setStore] = createStore<UseConfigOptions & StoreProps>({
  * 数据修改后，同步至 localStorage
  */
 createEffect(() => {
-  cacheList.forEach(key => useSetConfig(key, store[key]))
+  cacheList().forEach(key => {
+    useSetConfig(key, store[key])
+    if (key.includes('is') && store[key] !== configData[key]) {
+      configData = useGetConfig()
+      setCacheList(getCacheList(configData))
+    }
+  })
 })
