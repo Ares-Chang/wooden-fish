@@ -1,9 +1,12 @@
 import { store, setStore } from '../store'
 
 export function OtherOptions() {
+  const [tips, setStips] = createSignal('')
+  createEffect(() => setStips(store.isCount ? '开启' : '关闭'))
+
   function setCacheSetting() {
     setStore('isCount', !store.isCount)
-    alert(`缓存功能已${store.isCount ? '开启' : '关闭'}`)
+    alert(`缓存功能已${tips()}`)
   }
 
   function clearCache() {
@@ -20,7 +23,7 @@ export function OtherOptions() {
         <div mb-2>
           缓存:{' '}
           <span onClick={setCacheSetting}>
-            {store.isCount ? '开启' : '关闭'}
+            {tips()}
           </span>
         </div>
         <div>
