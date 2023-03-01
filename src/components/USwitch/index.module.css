@@ -1,0 +1,14 @@
+.slider {
+  @apply appearance-none w-60px h-30px bg-pink rd-8 cursor-pointer relative;
+}
+
+.slider:before {
+  @apply content-empty inline-block w-50% h-full rd-50% bg-white absolute left-0;
+}
+
+.slider:checked {
+  @apply bg-green;
+}
+.slider:checked:before {
+  @apply left-auto right-0;
+}
