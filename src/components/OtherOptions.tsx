@@ -4,9 +4,9 @@ export function OtherOptions() {
   const [tips, setStips] = createSignal('')
   createEffect(() => setStips(store.isCount ? '开启' : '关闭'))
 
-  function setCacheSetting() {
-    setStore('isCount', !store.isCount)
-    alert(`缓存功能已${tips()}`)
+  function setCacheSetting(checked: boolean) {
+    setStore('isCount', checked)
+    // alert(`缓存功能已${tips()}`)
   }
 
   function clearCache() {
@@ -20,14 +20,9 @@ export function OtherOptions() {
         其它设置
       </div>
       <div>
-        <div mb-2>
+        <div flex justify-center items-center gap-2 mb-2>
           缓存:
-          <span
-            pl-2
-            class={store.isCount ? 'color-green' : 'color-red'}
-            onClick={setCacheSetting}>
-            {tips()}
-          </span>
+          <USwitch checked={store.isCount} onChange={setCacheSetting} />
         </div>
         <div>
           <div color-blue onClick={clearCache}>
