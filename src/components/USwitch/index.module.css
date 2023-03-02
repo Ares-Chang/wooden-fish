@@ -1,5 +1,5 @@
 .slider {
-  @apply appearance-none w-60px h-30px bg-pink rd-8 cursor-pointer relative;
+  @apply appearance-none w-60px h-30px bg-gray rd-8 cursor-pointer relative;
 }
 
 .slider:before {
