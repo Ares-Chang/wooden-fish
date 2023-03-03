@@ -20,7 +20,13 @@ export function OtherOptions() {
         其它设置
       </div>
       <div>
-        <div flex justify-center items-center gap-2 mb-2>
+        <div
+          flex
+          justify-center
+          items-center
+          gap-2
+          mb-2
+          onClick={e => e.stopPropagation()}>
           缓存:
           <USwitch checked={store.isCount} onChange={setCacheSetting} />
         </div>
