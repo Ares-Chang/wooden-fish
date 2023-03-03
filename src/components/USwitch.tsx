@@ -5,7 +5,7 @@ export function USwitch(props: {
   onChange: (checked: boolean) => void
 }) {
   return (
-    <div inline-block>
+    <div flex>
       <input
         class={css.slider}
         checked={props.checked}

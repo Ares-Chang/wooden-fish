@@ -7,7 +7,7 @@ import { store, setStore } from './store'
 import { useCreateBGM, useSound } from './composables/useSound'
 
 const [zoom, setZoom] = createSignal(false)
-const [show, setShow] = createSignal(true) // 设置 Settings 显隐
+const [show, setShow] = createSignal(false) // 设置 Settings 显隐
 
 const bgm = useCreateBGM(store.volume / 100)
 const sound = new useSound(store.sound)
@@ -158,7 +158,7 @@ const App: Component = () => {
         </div>
       </footer>
       <Show when={show()}>
-        <Settings />
+        <Settings onClose={() => setShow(false)} />
       </Show>
     </div>
   )
