@@ -114,7 +114,8 @@ const App: Component = () => {
           cursor-pointer
           draggable={false}
           style={{
-            transform: `scale(${zoom() ? 0.99 : 1})`
+            transform: `scale(${zoom() ? 0.99 : 1})`,
+            '-webkit-tap-highlight-color': 'transparent'  // 清除移动端 touch 高亮效果
           }}
         />
       </main>
