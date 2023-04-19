@@ -14,7 +14,7 @@ export default defineConfig({
     }),
     /**
      * @see https://github.com/antfu/unocss
-     * see unocss.config.ts for config
+     * see uno.config.ts for config
      */
     Unocss()
   ],
